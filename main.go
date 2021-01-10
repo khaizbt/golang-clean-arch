@@ -1,31 +1,21 @@
 package main
 
 import (
-	"database/sql"
-	"net/http"
+	"log"
+	"time"
 
-	"github.com/gorilla/mux"
+	"github.com/getsentry/sentry-go"
 )
 
-var db *sql.DB
-var err error
-
 func main() {
-	db, err = sql.Open("mysql", "root@tcp(127.0.0.1:3306/go_mux)")
-
+	err := sentry.Init(sentry.ClientOptions{
+		Dsn: "https://188f6ce0c5a142bfb5be0d6f0bd7076f@o499613.ingest.sentry.io/5578313",
+	})
 	if err != nil {
-		panic(err.Error())
+		log.Fatalf("sentry.Init: %s", err)
 	}
 
-	defer db.Close()
+	defer sentry.Flush(2 * time.Second)
 
-	router := mux.NewRouter()
-
-	// post := router.PathPrefix("post")
-	router.HandleFunc("post", getPost).Methods("GET")
-	http.ListenAndServe(":8000", router)
-}
-
-func getPost(w http.ResponseWriter, r *http.Request) {
-
+	sentry.CaptureMessage("It works!")
 }
