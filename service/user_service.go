@@ -11,6 +11,7 @@ import (
 
 type (
 	UserService interface {
+		Login(input input.LoginEmailInput) (model.User, error)
 	}
 
 	service struct {

@@ -15,7 +15,7 @@ func GetDB() *gorm.DB {
 // SetupDB - setup dabase for sharing to all api
 func init() {
 
-	dsn := "root@tcp(127.0.0.1:3306)/dev_nemo_pos?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root@tcp(127.0.0.1:3306)/go_shop?charset=utf8mb4&parseTime=True&loc=Local"
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {

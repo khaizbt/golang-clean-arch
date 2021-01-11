@@ -10,7 +10,7 @@ import (
 
 type (
 	AuthService interface {
-		GenerateTokenUser(token string) (*jwt.Token, error)
+		GenerateTokenUser(token int) (string, error)
 		ValidateToken(encodedToken string) (*jwt.Token, error)
 	}
 
@@ -40,8 +40,7 @@ func (s *jwtService) GenerateTokenUser(userID int) (string, error) {
 	claim["iss"] = os.Getenv("APP_NAME")
 
 	token := jwt.NewWithClaims(JWT_SIGNING_METHOD, claim)
-
-	signedToken, err := token.SignedString(os.Getenv("SECRET_KEY"))
+	signedToken, err := token.SignedString([]byte(os.Getenv("SECRET_KEY")))
 	if err != nil {
 		return signedToken, err
 	}

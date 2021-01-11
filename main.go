@@ -1,11 +1,16 @@
 package main
 
 import (
+	"fmt"
+	"goshop/repository"
+	"goshop/route"
+	"goshop/service"
 	"log"
 	"os"
-	"time"
 
 	"github.com/getsentry/sentry-go"
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -16,7 +21,18 @@ func main() {
 		log.Fatalf("sentry.Init: %s", err)
 	}
 
-	defer sentry.Flush(2 * time.Second)
+	err = godotenv.Load()
+	// fmt.Println("masuk", os.Getenv("DB_USER"))
+	if err != nil {
+		log.Fatalf("Error getting env, not comming through %v", err)
+	} else {
+		fmt.Println("We are getting the env values")
+	}
 
-	sentry.CaptureMessage("It works!")
+	userRepo := repository.NewUserRepository()
+	userService := service.NewUserService(userRepo)
+
+	router := gin.Default()
+	route.RouteUser(router, userService)
+	router.Run(":8000")
 }
