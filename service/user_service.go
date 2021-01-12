@@ -12,6 +12,7 @@ import (
 type (
 	UserService interface {
 		Login(input input.LoginEmailInput) (model.User, error)
+		GetUserById(ID int) (model.User, error)
 	}
 
 	service struct {
@@ -21,6 +22,20 @@ type (
 
 func NewUserService(repository repository.UserRepository) *service {
 	return &service{repository}
+}
+
+func (s *service) GetUserById(ID int) (model.User, error) {
+	user, err := s.repository.FindByID(ID)
+
+	if err != nil {
+		return user, err
+	}
+
+	if user.ID != ID {
+		return user, errors.New("User Tidak Ditemukan")
+	}
+
+	return user, nil
 }
 
 func (s *service) Login(input input.LoginEmailInput) (model.User, error) {

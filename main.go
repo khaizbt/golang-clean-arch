@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"goshop/middleware"
 	"goshop/repository"
 	"goshop/route"
 	"goshop/service"
@@ -32,7 +33,9 @@ func main() {
 	userRepo := repository.NewUserRepository()
 	userService := service.NewUserService(userRepo)
 
+	secureMiddleware := middleware.SecureMiddleware()
+
 	router := gin.Default()
-	route.RouteUser(router, userService)
+	route.RouteUser(router, secureMiddleware, userService)
 	router.Run(":8000")
 }
