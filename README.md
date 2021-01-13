@@ -14,6 +14,6 @@ This Repo is Golang Clean Arc by me, if you have a best practice from this Templ
 To Run this Repo, you need to install [Go](https://golang.org/dl/)
 ## Usage
 
-1. You can use any RDBMS Database, for configuration the database is contained in the file [database.go](https://github.com/khaizbt/golang-clean-arch/blob/main/config/database.go) and Docw of database in [here](https://gorm.io/docs/connecting_to_the_database.html)
+1. You can use any RDBMS Database, for configuration the database is contained in the file [database.go](https://github.com/khaizbt/golang-clean-arch/blob/main/config/database.go) and Docs of database in [here](https://gorm.io/docs/connecting_to_the_database.html)
 
-2. Run ```go run main.go ``` in Project Directory or you can run main.exe to run this Project
+2. Run ```go run main.go ``` in Project Directory
