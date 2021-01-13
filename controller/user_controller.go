@@ -2,8 +2,8 @@ package controller
 
 import (
 	"goshop/config"
+	"goshop/entity"
 	"goshop/helper"
-	"goshop/input"
 	"goshop/model"
 	"goshop/service"
 	"net/http"
@@ -39,7 +39,7 @@ func FormatUser(user model.User, token string) UserFormatter { //Token akan dida
 }
 
 func (h *userController) Login(c *gin.Context) {
-	var input input.LoginEmailInput
+	var input entity.LoginEmailInput
 	err := c.ShouldBindJSON(&input)
 
 	if err != nil {
@@ -69,5 +69,31 @@ func (h *userController) Login(c *gin.Context) {
 
 	response := helper.APIResponse("Login Success", http.StatusOK, "success", FormatUser(loggedInUser, token))
 
+	c.JSON(http.StatusOK, response)
+}
+
+func (h *userController) UpdateProfile(c *gin.Context) {
+	var input entity.DataUserInput
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		// fmt.Println(err.Error())
+		// return
+		errorMessage := gin.H{"errors": helper.FormatValidationError(err)}
+
+		responsError := helper.APIResponse("Create Account Failed", http.StatusUnprocessableEntity, "fail", errorMessage)
+		c.JSON(http.StatusUnprocessableEntity, responsError)
+		return
+	}
+
+	input.ID = c.MustGet("currentUser").(model.User).ID
+	updateUser, err := h.userService.UpdateProfile(input)
+	if err != nil {
+		responsError := helper.APIResponse("Create Account Failed", http.StatusBadRequest, "fail", nil)
+		c.JSON(http.StatusBadRequest, responsError)
+		return
+	}
+
+	response := helper.APIResponse("Account has been registered", http.StatusOK, "success", updateUser)
 	c.JSON(http.StatusOK, response)
 }

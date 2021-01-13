@@ -2,7 +2,7 @@ package service
 
 import (
 	"errors"
-	"goshop/input"
+	"goshop/entity"
 	"goshop/model"
 	"goshop/repository"
 
@@ -11,8 +11,9 @@ import (
 
 type (
 	UserService interface {
-		Login(input input.LoginEmailInput) (model.User, error)
+		Login(input entity.LoginEmailInput) (model.User, error)
 		GetUserById(ID int) (model.User, error)
+		UpdateProfile(input entity.DataUserInput) (bool, error)
 	}
 
 	service struct {
@@ -38,7 +39,7 @@ func (s *service) GetUserById(ID int) (model.User, error) {
 	return user, nil
 }
 
-func (s *service) Login(input input.LoginEmailInput) (model.User, error) {
+func (s *service) Login(input entity.LoginEmailInput) (model.User, error) {
 	email := input.Email
 	password := input.Password
 
@@ -62,4 +63,24 @@ func (s *service) Login(input input.LoginEmailInput) (model.User, error) {
 	}
 
 	return user, nil
+}
+
+func (s *service) UpdateProfile(input entity.DataUserInput) (bool, error) {
+	user, err := s.repository.FindByID(input.ID)
+
+	if err != nil {
+		return false, err
+	}
+
+	user.Name = input.Name
+	user.Email = input.Email
+	user.Username = input.Username
+
+	_, err = s.repository.UpdateProfile(user)
+
+	if err != nil {
+		return false, err
+	}
+
+	return true, nil
 }

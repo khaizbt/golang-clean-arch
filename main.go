@@ -36,6 +36,7 @@ func main() {
 	secureMiddleware := middleware.SecureMiddleware()
 
 	router := gin.Default()
-	route.RouteUser(router, secureMiddleware, userService)
+	router.Use(secureMiddleware)
+	route.RouteUser(router, userService)
 	router.Run(":8000")
 }

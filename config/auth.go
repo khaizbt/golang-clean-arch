@@ -36,11 +36,11 @@ func (s *jwtService) GenerateTokenUser(userID int) (string, error) {
 	claim := jwt.MapClaims{}
 
 	claim["user_id"] = userID
-	claim["exp"] = time.Now().Add(LOGIN_EXP).Unix()
-	claim["iss"] = os.Getenv("APP_NAME")
+	// claim["exp"] = time.Now().Add(LOGIN_EXP).Unix()
+	// claim["iss"] = os.Getenv("APP_NAME")
 
 	token := jwt.NewWithClaims(JWT_SIGNING_METHOD, claim)
-	signedToken, err := token.SignedString([]byte(os.Getenv("SECRET_KEY")))
+	signedToken, err := token.SignedString(JWT_SIGNATURE_KEY)
 	if err != nil {
 		return signedToken, err
 	}
@@ -55,7 +55,6 @@ func (s *jwtService) ValidateToken(encodedToken string) (*jwt.Token, error) {
 		if !ok {
 			return nil, errors.New("Invalid Token")
 		}
-
 		return JWT_SIGNATURE_KEY, nil
 	})
 

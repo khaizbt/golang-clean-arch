@@ -32,6 +32,7 @@ func AuthMiddlewareUser(authService config.AuthService, userService service.User
 		token, err := authService.ValidateToken(tokenString)
 
 		if err != nil {
+
 			response := helper.APIResponse("Unauthorized #TKN002", http.StatusUnauthorized, "error", nil)
 			c.AbortWithStatusJSON(http.StatusUnauthorized, response) //Agar proses dihentikan/tidak eksekusi program yang dibungkus middleware
 			return
