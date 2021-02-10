@@ -8,7 +8,7 @@ This Repo is Golang Clean Arc by me, if you have a best practice from this Templ
 2. Gorm for query
 3. JWT for Authentication
 4. Middleware Using [Secure Middleware](https://github.com/unrolled/secure)
-
+5. If you will use TLS Encryption, use Branch TLS_Encrypt
 ## Installation
 
 To Run this Repo, you need to install [Go](https://golang.org/dl/)
