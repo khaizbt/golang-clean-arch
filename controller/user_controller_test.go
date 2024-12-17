@@ -8,14 +8,14 @@ import (
 	"goshop/config"
 	"goshop/entity"
 	"goshop/repository"
-	"goshop/service"
+	"goshop/workflow"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 )
 
 var userRepo = repository.NewUserRepository()
-var userService = service.NewUserService(userRepo)
+var userService = workflow.NewUserService(userRepo)
 var authService = config.NewServiceAuth()
 var userTestController = NewUserController(userService, authService)
 

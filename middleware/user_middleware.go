@@ -3,7 +3,7 @@ package middleware
 import (
 	"goshop/config"
 	"goshop/helper"
-	"goshop/service"
+	"goshop/workflow"
 	"net/http"
 	"strings"
 
@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AuthMiddlewareUser(authService config.AuthService, userService service.UserService) gin.HandlerFunc {
+func AuthMiddlewareUser(authService config.AuthService, userService workflow.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
 
@@ -46,7 +46,7 @@ func AuthMiddlewareUser(authService config.AuthService, userService service.User
 			return
 		}
 
-		userID := int(claim["user_id"].(float64)) //Claim type datanya MapClaim, harus diubah ke int(sesuai parameter GetUserByID)
+		userID := claim["user_id"].(string) //Claim type datanya MapClaim, harus diubah ke int(sesuai parameter GetUserByID)
 		role := claim["role"]
 
 		user, err := userService.GetUserById(userID)

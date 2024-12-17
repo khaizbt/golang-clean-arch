@@ -5,25 +5,25 @@ import (
 	"goshop/entity"
 	"goshop/helper"
 	"goshop/model"
-	"goshop/service"
+	"goshop/workflow"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type userController struct {
-	userService service.UserService
+	userService workflow.UserService
 	authService config.AuthService
 }
 
-func NewUserController(userService service.UserService, authService config.AuthService) *userController {
+func NewUserController(userService workflow.UserService, authService config.AuthService) *userController {
 	return &userController{userService, authService}
 }
 
 type UserFormatter struct {
-	UserID int    `json:"id"`
+	UserID string `json:"id"`
 	Email  string `json:"email"`
-	Phone  int    `json:"phone"`
+	Phone  string `json:"phone"`
 	Token  string `json:"token"`
 }
 

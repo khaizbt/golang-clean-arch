@@ -7,7 +7,7 @@ type (
 	}
 
 	DataUserInput struct {
-		ID       int
+		ID       string
 		Name     string `json:"name"`
 		Email    string `json:"email"`
 		Username string `json:"username"`
