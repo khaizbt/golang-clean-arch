@@ -3,7 +3,7 @@ package middleware
 import (
 	"goshop/config"
 	"goshop/helper"
-	"goshop/service"
+	"goshop/workflow"
 	"net/http"
 	"strings"
 
@@ -12,7 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AuthMiddlewareUser(authService config.AuthService, userService service.UserService) gin.HandlerFunc {
+func AuthMiddlewareUser(authService config.AuthService, userService workflow.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
 

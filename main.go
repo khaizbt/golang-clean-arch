@@ -5,7 +5,7 @@ import (
 	"goshop/middleware"
 	"goshop/repository"
 	"goshop/route"
-	"goshop/service"
+	"goshop/workflow"
 	"log"
 	"os"
 
@@ -33,7 +33,7 @@ func main() {
 	}
 
 	userRepo := repository.NewUserRepository()
-	userService := service.NewUserService(userRepo)
+	userService := workflow.NewUserService(userRepo)
 
 	secureMiddleware := middleware.SecureMiddleware()
 
