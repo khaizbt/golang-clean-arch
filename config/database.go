@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
@@ -39,7 +40,15 @@ func init() {
 		panic("migration failed")
 	}
 
-	Seeds(db)
+	// If data exist, not run seeder
+	err = db.First(&model.User{}).Error
+
+	if err != nil {
+
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			Seeds(db)
+		}
+	}
 
 }
 
