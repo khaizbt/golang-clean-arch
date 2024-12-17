@@ -41,5 +41,5 @@ func main() {
 	router.Use(secureMiddleware)
 	router.Use(sentrygin.New(sentrygin.Options{}))
 	route.RouteUser(router, userService)
-	router.Run(":8000")
+	router.Run(fmt.Sprintf(":%s", os.Getenv("APP_PORT")))
 }

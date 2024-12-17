@@ -21,9 +21,9 @@ func NewUserController(userService workflow.UserService, authService config.Auth
 }
 
 type UserFormatter struct {
-	UserID int    `json:"id"`
+	UserID string `json:"id"`
 	Email  string `json:"email"`
-	Phone  int    `json:"phone"`
+	Phone  string `json:"phone"`
 	Token  string `json:"token"`
 }
 

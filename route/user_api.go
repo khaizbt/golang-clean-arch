@@ -14,6 +14,6 @@ func RouteUser(route *gin.Engine, service workflow.UserService) {
 	userController := controller.NewUserController(service, authService)
 	userMiddleware := middleware.AuthMiddlewareUser(authService, service) // middl.AuthMiddlewareManager(authService, workflow)
 	api := route.Group("/api/v1/")
-	api.POST("login", userController.Login)
+	api.POST("user/login", userController.Login)
 	api.POST("update-account", userMiddleware, userController.UpdateProfile)
 }

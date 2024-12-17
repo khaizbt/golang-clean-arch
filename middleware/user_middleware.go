@@ -46,7 +46,7 @@ func AuthMiddlewareUser(authService config.AuthService, userService workflow.Use
 			return
 		}
 
-		userID := int(claim["user_id"].(float64)) //Claim type datanya MapClaim, harus diubah ke int(sesuai parameter GetUserByID)
+		userID := claim["user_id"].(string) //Claim type datanya MapClaim, harus diubah ke int(sesuai parameter GetUserByID)
 		role := claim["role"]
 
 		user, err := userService.GetUserById(userID)
