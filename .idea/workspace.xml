@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e734f7b2-6637-4b77-8aac-a569462248c7" name="Default Changelist" comment="add : id user to uuid">
+    <list default="true" id="e734f7b2-6637-4b77-8aac-a569462248c7" name="Default Changelist" comment="add : no run seed if data exist">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/user_controller_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user_controller_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/user_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/user_middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/user_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/user_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/route/user_api.go" beforeDir="false" afterPath="$PROJECT_DIR$/route/user_api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflow/user_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/workflow/user_service.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,24 +35,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "khaizbt"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;khaizbt&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/khaizbt/golang-clean-arch.git",
-    "accountId": "fede2eaa-c6f2-4ade-be4e-9e40a08a09c6"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/khaizbt/golang-clean-arch.git&quot;,
+    &quot;accountId&quot;: &quot;fede2eaa-c6f2-4ade-be4e-9e40a08a09c6&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;khaizbt&quot;,
+    &quot;repository&quot;: &quot;golang-clean-arch&quot;
   }
-}]]></component>
+}</component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="1mrwERfEJ35QLkO1SCe4PjD9Dvl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -57,7 +79,7 @@
     "git-widget-placeholder": "feat/v.2.0",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/media/sicakbaka/linux/Project/Golang/golang-clean-arch",
+    "last_opened_file_path": "/media/sicakbaka/linux/Privy/Privy/Project/Carstensz/registrar",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -95,7 +117,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rename : package service to workflow" />
     <MESSAGE value="add : id user to uuid" />
-    <option name="LAST_COMMIT_MESSAGE" value="add : id user to uuid" />
+    <MESSAGE value="add : no run seed if data exist" />
+    <option name="LAST_COMMIT_MESSAGE" value="add : no run seed if data exist" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"goshop/middleware"
-	"goshop/repository"
-	"goshop/route"
-	"goshop/workflow"
+	"github.com/khaizbt/golang-clean-arch/middleware"
+	"github.com/khaizbt/golang-clean-arch/repository"
+	"github.com/khaizbt/golang-clean-arch/route"
+	"github.com/khaizbt/golang-clean-arch/workflow"
 	"log"
 	"os"
 

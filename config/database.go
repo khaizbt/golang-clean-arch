@@ -2,13 +2,13 @@ package config
 
 import (
 	"errors"
-	"fmt"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
+	"github.com/khaizbt/golang-clean-arch/model"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"goshop/model"
 	"os"
 )
 
@@ -23,30 +23,36 @@ func GetDB() *gorm.DB {
 func init() {
 	_ = godotenv.Load(".env")
 
+	var err error
+
 	databaseInisialisation := "" + os.Getenv("DB_USER") + ":" + os.Getenv("DB_PASSWORD") + "@tcp(" + os.Getenv("DB_HOST") + ":" + os.Getenv("DB_PORT") + ")/" + os.Getenv("DB_NAME") + "?charset=utf8mb4&parseTime=True&loc=Local"
+	database := db
+	//Switch Database
+	if os.Getenv("DB_DRIVER") == "MYSQL" {
+		database, err = gorm.Open(mysql.Open(databaseInisialisation), &gorm.Config{})
 
-	fmt.Println(databaseInisialisation)
-	database, err := gorm.Open(mysql.Open(databaseInisialisation), &gorm.Config{})
-
-	if err != nil {
-		panic("failed to connect database")
+		if err != nil {
+			panic("failed to connect database")
+		}
+	} else if os.Getenv("DB_DRIVER") == "POSTGRES" {
+		database, err = gorm.Open(postgres.Open(databaseInisialisation), &gorm.Config{})
+	} else {
+		panic("database driver not supported")
 	}
 
-	db = database
-
-	err = db.AutoMigrate(&model.User{})
+	err = database.AutoMigrate(&model.User{})
 
 	if err != nil {
-		panic("migration failed")
+		panic("connection to database failed")
 	}
 
 	// If data exist, not run seeder
-	err = db.First(&model.User{}).Error
+	err = database.First(&model.User{}).Error
 
 	if err != nil {
 
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			Seeds(db)
+			Seeds(database)
 		}
 	}
 

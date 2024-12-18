@@ -1,11 +1,11 @@
 package controller
 
 import (
-	"goshop/config"
-	"goshop/entity"
-	"goshop/helper"
-	"goshop/model"
-	"goshop/workflow"
+	"github.com/khaizbt/golang-clean-arch/config"
+	"github.com/khaizbt/golang-clean-arch/entity"
+	"github.com/khaizbt/golang-clean-arch/helper"
+	"github.com/khaizbt/golang-clean-arch/model"
+	"github.com/khaizbt/golang-clean-arch/workflow"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

@@ -1,7 +1,7 @@
 package config
 
 import (
-	"goshop/helper"
+	"github.com/khaizbt/golang-clean-arch/helper"
 	"os"
 
 	"github.com/joho/godotenv"

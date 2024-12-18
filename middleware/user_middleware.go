@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"goshop/config"
-	"goshop/helper"
-	"goshop/workflow"
+	"github.com/khaizbt/golang-clean-arch/config"
+	"github.com/khaizbt/golang-clean-arch/helper"
+	"github.com/khaizbt/golang-clean-arch/workflow"
 	"net/http"
 	"strings"
 

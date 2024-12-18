@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"goshop/config"
-	"goshop/model"
+	"github.com/khaizbt/golang-clean-arch/config"
+	"github.com/khaizbt/golang-clean-arch/model"
 
 	"gorm.io/gorm"
 )
