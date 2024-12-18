@@ -2,9 +2,9 @@ package workflow
 
 import (
 	"errors"
-	"goshop/entity"
-	"goshop/model"
-	"goshop/repository"
+	"github.com/khaizbt/golang-clean-arch/entity"
+	"github.com/khaizbt/golang-clean-arch/model"
+	"github.com/khaizbt/golang-clean-arch/repository"
 
 	"golang.org/x/crypto/bcrypt"
 )
